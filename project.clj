@@ -1,6 +1,6 @@
-(defproject wscljs "0.1.0-SNAPSHOT"
-  :description "FIXME: write this!"
-  :url "http://example.com/FIXME"
+(defproject wscljs "0.1.0"
+  :description "A thin and lightweight websocket client for ClojureScript."
+  :url "https://github.com/nilenso/wscljs"
   :license {:name "Eclipse Public License"
             :url "http://www.eclipse.org/legal/epl-v10.html"}
 
