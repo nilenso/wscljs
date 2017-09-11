@@ -64,7 +64,7 @@
                  (done))))))
 
 
-(deftest test-receive
+(deftest test-json
   (testing "Receiving sent data over the socket connection"
     (async done
            (go (let [data {:command "ping"}
