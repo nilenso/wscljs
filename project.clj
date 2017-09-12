@@ -15,8 +15,8 @@
 
   :source-paths ["src"]
 
-  :deploy-repositories [["releases" {:url "https://clojars.org/repo"
-                                     :sign-releases false}]]
+  :deploy-repositories [["clojars" {:url "https://clojars.org/repo"
+                                    :sign-releases false}]]
 
   :aliases {"test" ["run" "-m" "wscljs.runner"]}
 
