@@ -1,5 +1,8 @@
 # wscljs
 
+[![Clojars
+Project](https://img.shields.io/clojars/v/nilenso/wscljs.svg)](https://clojars.org/nilenso/wscljs)
+
 A thin and lightweight websocket client for ClojureScript.
 
 ## Setup
