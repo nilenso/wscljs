@@ -12,7 +12,7 @@
     2 :stopping
     3 :stopped))
 
-(defn start
+(defn create
   "Starts a websocket connection and returns it.
 
   Takes the following arguments:
@@ -30,7 +30,7 @@
            '[wscljs.format :as fmt])
 
 
-  (def socket (ws/start \"ws://....\" handler-map))
+  (def socket (ws/create \"ws://....\" handler-map))
 
   (ws/send socket data fmt/json)
   "

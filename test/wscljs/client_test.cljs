@@ -19,7 +19,7 @@
   (testing "Opening a socket connection"
     (async done
            (go
-             (let [socket (ws/start wsurl {:on-message identity})]
+             (let [socket (ws/create wsurl {:on-message identity})]
                (is (= :connecting (ws/status socket)))
                (<! (timeout 1000))
                (is (= :open (ws/status socket)))
@@ -29,7 +29,7 @@
   (testing "Closing a socket connection"
     (async done
            (go
-             (let [socket (ws/start wsurl {:on-message identity})]
+             (let [socket (ws/create wsurl {:on-message identity})]
                (<! (timeout 1000))
                (ws/close socket)
                (is (= :stopping (ws/status socket)))
@@ -40,7 +40,7 @@
 (deftest test-send
   (testing "Sending data through the socket connection"
     (async done
-           (go (let [socket (ws/start wsurl {:on-message identity})]
+           (go (let [socket (ws/create wsurl {:on-message identity})]
                  (<! (timeout 1000))
                  (ws/close socket)
                  (<! (timeout 1000))
@@ -56,7 +56,7 @@
     (async done
            (go (let [data "hello"
                      recvd-data (atom nil)
-                     socket (ws/start wsurl {:on-message #(reset! recvd-data (.-data %))})]
+                     socket (ws/create wsurl {:on-message #(reset! recvd-data (.-data %))})]
                  (<! (timeout 1000))
                  (ws/send socket data fmt/identity)
                  (<! (timeout 1000))
@@ -70,7 +70,7 @@
            (go (let [data {:command "ping"}
                      format fmt/json
                      recvd-data (atom nil)
-                     socket (ws/start wsurl {:on-message #(reset! recvd-data
+                     socket (ws/create wsurl {:on-message #(reset! recvd-data
                                                                   (fmt/read format (.-data %)))})]
                  (<! (timeout 1000))
                  (ws/send socket data format)
