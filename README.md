@@ -3,7 +3,16 @@
 [![Clojars
 Project](https://img.shields.io/clojars/v/nilenso/wscljs.svg)](https://clojars.org/nilenso/wscljs)
 
-A thin and lightweight websocket client for ClojureScript.
+A thin and lightweight(no external dependencies) websocket client for
+ClojureScript.
+
+## Why did we write this?
+
+There are already existing Clojure/Clojurescript websocket libraries like [Sente](https://github.com/ptaoussanis/sente)
+and [Chord](https://github.com/jarohen/chord). However these libraries support creating both websocket server and
+client. This requires additional dependencies which we didn't want. Wscljs is a
+thin wrapper over the Javascript websockets and brings in no extra
+dependency.
 
 ## Usage
 
