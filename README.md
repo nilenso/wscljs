@@ -13,17 +13,31 @@ To create a new websocket connection:
 
     (def socket (ws/create "ws://...." handlers))
 
-where handlers is a map containing handler functions mapped to the following keys:
+where `handlers` is a map containing handler functions mapped to the following keys:
 
-- `:on-open`    => called when opening a socket connection
-- `:on-message` => called when recieving message on the socket
-- `:on-close`   => called when closing a socket connection
+Required:
 
-To send data over the socket, do:
+  - `:on-message` => called when recieving message on the socket
 
-    (ws/send socket data encoding)
+Optional:
 
-The available encodings are `identity` (raw/no encoding) and `json`
+  - `:on-open`    => called when opening a socket connection
+  - `:on-close`   => called when closing a socket connection
+
+For example, to print the data received by the socket, do:
+
+    (def handlers {:on-message (fn [e] (prn (.-data e)))
+                   :on-open #(prn "Opening a new connection")
+                   :on-close #(prn "Closing a connection")})
+    (def socket (ws/create "ws://...." handlers))
+
+To send json data over the socket, do:
+
+    (require '[wscljs.format :as fmt])
+
+    (ws/send socket {:command "ping"} fmt/json)
+
+*The supported formats are `json` and `identity` (for now).*
 
 After you're done, close the socket using:
 
