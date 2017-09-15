@@ -47,7 +47,7 @@
 (defn send
   "Sends data over socket in the specified format."
   ([socket data]
-   (send socket data fmt/json))
+   (send socket data fmt/identity))
   ([socket data format]
    {:pre [(s/valid? ::ws-spec/websocket-open socket)]}
    (.send socket (fmt/write format data))))
