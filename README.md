@@ -5,6 +5,30 @@ Project](https://img.shields.io/clojars/v/nilenso/wscljs.svg)](https://clojars.o
 
 A thin and lightweight websocket client for ClojureScript.
 
+## Usage
+
+    (require '[wscljs.client :as ws]
+
+To create a new websocket connection:
+
+    (def socket (ws/create "ws://...." handlers))
+
+where handlers is a map containing handler functions mapped to the following keys:
+
+- `:on-open`    => called when opening a socket connection
+- `:on-message` => called when recieving message on the socket
+- `:on-close`   => called when closing a socket connection
+
+To send data over the socket, do:
+
+    (ws/send socket data encoding)
+
+The available encodings are `identity` (raw/no encoding) and `json`
+
+After you're done, close the socket using:
+
+    (ws/close socket)
+
 ## Setup
 
 To get an interactive development environment run:
@@ -30,30 +54,6 @@ To create a production build run:
 
 And open your browser in `resources/public/index.html`. You will not
 get live reloading, nor a REPL.
-
-## Usage
-
-    (require '[wscljs.client :as ws]
-
-To create a new websocket connection:
-
-    (def socket (ws/create "ws://...." handlers))
-
-where handlers is a map containing handler functions mapped to the following keys:
-
-- `:on-open`    => called when opening a socket connection
-- `:on-message` => called when recieving message on the socket
-- `:on-close`   => called when closing a socket connection
-
-To send data over the socket, do:
-
-    (ws/send socket data encoding)
-
-The available encodings are `identity` (raw/no encoding) and `json`
-
-After you're done, close the socket using:
-
-    (ws/close socket)
 
 ## Testing
 
