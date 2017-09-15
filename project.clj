@@ -26,7 +26,7 @@
                 :figwheel {:on-jsload "wscljs.core/on-js-reload"
                            :open-urls ["http://localhost:3449/index.html"]}
 
-                :compiler {:main wscljs.core
+                :compiler {:main wscljs.client
                            :asset-path "js/compiled/out"
                            :output-to "resources/public/js/compiled/wscljs.js"
                            :output-dir "resources/public/js/compiled/out"
@@ -44,7 +44,7 @@
                {:id "min"
                 :source-paths ["src"]
                 :compiler {:output-to "resources/public/js/compiled/wscljs.js"
-                           :main wscljs.core
+                           :main wscljs.client
                            :optimizations :advanced
                            :pretty-print false}}]}
 
