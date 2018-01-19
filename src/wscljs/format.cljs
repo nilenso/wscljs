@@ -1,4 +1,5 @@
-(ns wscljs.format)
+(ns wscljs.format
+  (:refer-clojure :exclude [identity]))
 
 
 (defprotocol Format
