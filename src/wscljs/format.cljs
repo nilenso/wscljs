@@ -1,5 +1,6 @@
 (ns wscljs.format
-  (:refer-clojure :exclude [identity]))
+  (:refer-clojure :exclude [identity])
+  (:require [cljs.reader :as reader]))
 
 
 (defprotocol Format
@@ -20,3 +21,9 @@
   (reify Format
     (read  [_ s] (js->clj (js/JSON.parse s) :keywordize-keys true))
     (write [_ v] (js/JSON.stringify (clj->js v)))))
+
+(def edn
+  "Read and write data serialized as EDN."
+  (reify Format
+    (read [_ s] (reader/read-string s))
+    (write [_ v] (prn-str v))))

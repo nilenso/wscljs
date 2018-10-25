@@ -77,3 +77,17 @@
                  (<! (timeout 1000))
                  (is (= data @recvd-data))
                  (done))))))
+
+(deftest test-edn
+  (testing "Receiving sent data over the socket connection with fmt/edn"
+    (async done
+           (go (let [data {:command "ping"}
+                     format fmt/edn
+                     recvd-data (atom nil)
+                     socket (ws/create wsurl {:on-message #(reset! recvd-data
+                                                                   (fmt/read format (.-data %)))})]
+                 (<! (timeout 1000))
+                 (ws/send socket data format)
+                 (<! (timeout 1000))
+                 (is (= data @recvd-data))
+                 (done))))))
