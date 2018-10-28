@@ -16,11 +16,15 @@ dependency.
 
 ## Usage
 
-    (require '[wscljs.client :as ws]
+```clojure
+(require '[wscljs.client :as ws]
+```
 
 To create a new websocket connection:
 
-    (def socket (ws/create "ws://...." handlers))
+```clojure
+(def socket (ws/create "ws://...." handlers))
+```
 
 where `handlers` is a map containing handler functions mapped to the following keys:
 
@@ -34,46 +38,62 @@ Optional:
   - `:on-close`   => called when closing a socket connection
 
 For example, to print the data received by the socket, do:
-
-    (def handlers {:on-message (fn [e] (prn (.-data e)))
-                   :on-open #(prn "Opening a new connection")
-                   :on-close #(prn "Closing a connection")})
-    (def socket (ws/create "ws://...." handlers))
-
+```clojure
+(def handlers {:on-message (fn [e] (prn (.-data e)))
+               :on-open    #(prn "Opening a new connection")
+               :on-close   #(prn "Closing a connection")})
+(def socket (ws/create "ws://...." handlers))
+```
 To send json data over the socket, do:
 
-    (require '[wscljs.format :as fmt])
+```clojure
+(require '[wscljs.format :as fmt])
 
-    (ws/send socket {:command "ping"} fmt/json)
+(ws/send socket {:command "ping"} fmt/json)
+```
 
-*The supported formats are `json` and `identity` (for now).*
+**The supported formats are:**
 
-After you're done, close the socket using:
+- `json`
+- `edn`
+- `identity`
 
-    (ws/close socket)
+After you're done, close the socket:
+
+```clojure
+(ws/close socket)
+```
 
 ## Setup
 
 To get an interactive development environment run:
 
-    lein figwheel
+```shell
+lein figwheel
+```
 
 and open your browser at [localhost:3449](http://localhost:3449/).
 This will auto compile and send all changes to the browser without the
 need to reload. After the compilation process is complete, you will
 get a Browser Connected REPL. An easy way to try it is:
 
-    (js/alert "Am I connected?")
+```clojure
+(js/alert "Am I connected?")
+```
 
 and you should see an alert in the browser window.
 
 To clean all compiled files:
 
-    lein clean
+```shell
+lein clean
+```
 
 To create a production build run:
 
-    lein do clean, cljsbuild once min
+```shell
+lein do clean, cljsbuild once min
+```
 
 And open your browser in `resources/public/index.html`. You will not
 get live reloading, nor a REPL.
@@ -82,9 +102,11 @@ get live reloading, nor a REPL.
 
 To run the tests, do
 
-    lein test
+```shell
+lein test
+```
 
-## Contributors
+## Authors
 
 - Abhik Khanra (@trycatcher)
 - Kiran Gangadharan (@kirang89)
