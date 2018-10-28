@@ -1,4 +1,4 @@
-(defproject nilenso/wscljs "0.1.2"
+(defproject nilenso/wscljs "0.1.3"
   :description "A thin and lightweight websocket client for ClojureScript."
   :url "https://github.com/nilenso/wscljs"
   :license {:name "Eclipse Public License"
