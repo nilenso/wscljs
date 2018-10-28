@@ -100,7 +100,8 @@ get live reloading, nor a REPL.
 
 ## Testing
 
-To run the tests, do
+Inorder to run tests, you need to have [PhantomJS](http://phantomjs.org/)
+installed. After installing it, run the tests:
 
 ```shell
 lein test
