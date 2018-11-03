@@ -34,13 +34,14 @@
 
   (ws/send socket data fmt/json)
   "
-  [url {:keys [on-open on-message on-close] :as handler-map}]
+  [url {:keys [on-open on-message on-close on-error] :as handler-map}]
   {:pre [(s/valid? ::ws-spec/websocket-handler-map handler-map)]}
   (if-let [sock (js/WebSocket. url)]
     (do
       (set! (.-onopen sock) on-open)
       (set! (.-onmessage sock) on-message)
       (set! (.-onclose sock) on-close)
+      (set! (.-onerror sock) on-error)
       sock)
     (throw (js/Error. (str "Web socket connection failed: " url)))))
 

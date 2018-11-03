@@ -11,4 +11,5 @@
 (s/def ::websocket-handler-map
   (s/keys :req-un [::on-message]
           :opt-un [::on-open
-                   ::on-close]))
+                   ::on-close
+                   ::on-error]))
