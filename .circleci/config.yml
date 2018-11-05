@@ -2,7 +2,7 @@ version: 2
 jobs:
   build:
     docker:
-      # specify the version you desire here
+      # -browsers-legacy gets us PhantomJS (see https://circleci.com/docs/2.0/circleci-images/#language-image-variants)
       - image: circleci/clojure:lein-2.8.1-browsers-legacy
 
     working_directory: ~/repo
