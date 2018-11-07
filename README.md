@@ -1,6 +1,6 @@
 # wscljs
 
-[![Clojars
+[![CircleCI](https://circleci.com/gh/nilenso/wscljs.svg?style=svg)](https://circleci.com/gh/nilenso/wscljs) [![Clojars
 Project](https://img.shields.io/clojars/v/nilenso/wscljs.svg)](https://clojars.org/nilenso/wscljs)
 
 A thin and lightweight(no external dependencies) websocket client for
