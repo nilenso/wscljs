@@ -36,6 +36,7 @@ Optional:
 
   - `:on-open`    => called when opening a socket connection
   - `:on-close`   => called when closing a socket connection
+  - `:on-error`   => called when an error is received
 
 For example, to print the data received by the socket, do:
 ```clojure
