@@ -108,6 +108,9 @@ installed. After installing it, run the tests:
 lein test
 ```
 
+*Note: I've only tested this with Phantom 2.1.1. As per [this comment](https://github.com/nilenso/wscljs/issues/4#issuecomment-435992513), using < 2.x may not work.*
+
+
 ## Authors
 
 - Abhik Khanra (@trycatcher)
